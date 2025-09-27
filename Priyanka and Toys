@@ -1,0 +1,11 @@
+ sort(w.begin(), w.end());  // Sort the weights
+    int groups = 1;             // Start with one group
+    int limit = w[0] + 4;       // Maximum weight allowed in current group
+
+    for (int i = 1; i < w.size(); i++){
+        if (w[i] > limit){     // If weight exceeds current group's max allowed weight
+            groups++;           // Need a new group
+            limit=w[i]+4;   // Set new limit for the new group
+        }
+    }
+    return groups;
