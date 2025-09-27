@@ -1,0 +1,30 @@
+string encryption(string s) {
+// Step 1: Remove all spaces from the string
+    s.erase(remove(s.begin(),s.end(),' '),s.end());
+    
+    // Step 2: Calculate number of rows and columns for the grid
+    int length=s.size();
+    int rows=(int)floor(sqrt(length));
+    int cols=(int)ceil(sqrt(length));
+    
+    // Make sure the grid can fit all characters
+    if (rows*cols<length) {
+        rows+=1;
+    }
+    
+    // Step 3: Read characters column-wise and form the encrypted string
+    string encrypted = "";
+    for (int c=0;c<cols;c++) {
+        for(int r=0;r<rows;r++) {
+            int index=r*cols+c;
+            if(index<length){
+                encrypted+=s[index];
+            }
+        }
+        if(c<cols-1) {
+            encrypted+=' ';  // Add space between columns
+        }
+    }
+    
+    return encrypted;
+}
