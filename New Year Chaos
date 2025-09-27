@@ -1,0 +1,25 @@
+// in cpp 
+void minimumBribes(vector<int> q) {
+     int bribes=0;
+    int n=q.size();
+    
+    for (int i=0;i<n;i++) {
+        // If any person has moved more than two positions ahead, it's too chaotic
+        if (q[i]-(i+1)>2) {
+            cout<<"Too chaotic"<<endl;
+            return;
+        }
+    }
+    
+    // Count the total number of bribes using a modified bubble sort approach
+    for (int i=0;i<n;i++){
+        // Check from one position ahead of the original position of q[i]
+        for(int j=max(0,q[i]-2);j<i;j++) {
+            if(q[j]>q[i]){
+               bribes++;
+            }
+        }
+    }
+    
+    cout<<bribes << endl;
+}
