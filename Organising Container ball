@@ -1,0 +1,22 @@
+int n = container.size();
+    vector<long long> containerCapacities(n, 0);
+    vector<long long> ballTypeCounts(n, 0);
+
+    for (int i = 0; i < n; i++) {
+        long long rowSum = 0;
+        long long colSum = 0;
+        for (int j = 0; j < n; j++) {
+            rowSum += container[i][j];
+            colSum += container[j][i];
+        }
+        containerCapacities[i] = rowSum;
+        ballTypeCounts[i] = colSum;
+    }
+
+    sort(containerCapacities.begin(), containerCapacities.end());
+    sort(ballTypeCounts.begin(), ballTypeCounts.end());
+
+    if (containerCapacities == ballTypeCounts)
+        return "Possible";
+    else
+        return "Impossible";
