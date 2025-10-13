@@ -1,0 +1,11 @@
+int substrings(string n) {
+    long long total=0,prev=0;
+    int i=0;
+    int mod=1000000007;
+    while(n[i]!='\0'){
+     prev=(prev*10+(n[i]-'0')*(i+1))%mod;
+     total=(total+prev)%mod;
+     i++;
+    }
+    return total;
+}
